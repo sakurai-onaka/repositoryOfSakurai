@@ -21,7 +21,17 @@ public class Lesson1 {
 
 	public static void main(String[] args) {
 		/*ここから記入*/
-
+		System.out.println("出力します");
+		//num1に12を代入する。
+		int num1 = 12;
+		float num2 = 1.6F;
+		String msg = "こんにちは";
+		boolean flg = true;
+		
+		System.out.println(num1);
+		System.out.println(num2);
+		System.out.println(msg);
+		System.out.println(flg);
 	}
 
 }
