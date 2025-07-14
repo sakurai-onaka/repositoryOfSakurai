@@ -15,7 +15,9 @@
 
 package day02;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Lesson3 {
 
@@ -24,9 +26,30 @@ public class Lesson3 {
 		int sum = 0;// 合計金額
 		int average = 0;// 平均金額
 		int inputCount = 0;//入力した回数
-
 		/*ここから記入*/
-
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("金額①を入力してください>>");
+		String num1 = br.readLine();
+		inputCount++;
+		
+		System.out.print("金額②を入力してください>>");
+		String num2 = br.readLine();
+		inputCount++;
+		
+		System.out.print("金額③を入力してください>>");
+		String num3 = br.readLine();
+		inputCount++;
+		
+		sum += Integer.parseInt(num1);
+		sum += Integer.parseInt(num2);
+		sum += Integer.parseInt(num3);
+		sum = (int)(sum + (sum * 0.08));
+		
+		average = sum / inputCount;
+		
+		System.out.println("①から③の合計は税込み"+ sum +"円");
+		System.out.println("①から③の平均は"+average+"円");
+		
 	}
 
 }
