@@ -21,5 +21,4 @@ public class Question07_05 {
 			System.out.println("\n");
 		}
 	}
-
 }

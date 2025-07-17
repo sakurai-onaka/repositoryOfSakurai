@@ -1,4 +1,4 @@
-package questoin01;
+package question01;
 
 public class Question01_02 {
 
