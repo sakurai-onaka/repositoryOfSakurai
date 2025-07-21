@@ -60,7 +60,24 @@ class Main {
 
 	public static void main(String[] args) throws IOException {
 		/*ここから記入*/
-
+		ConsoleReader cr = new ConsoleReader();
+		Vallidation vd = new Vallidation();
+		
+		boolean loginFlag = false;
+		int id = 0;
+		
+		System.out.println("4ケタのログインIDを入力してください");
+		while(loginFlag == false) {
+			System.out.print("input id? >>");
+			id = cr.inputId();
+			loginFlag = vd.checkId(id);
+			if(loginFlag == true) {
+				System.out.println("ログインに成功しました");
+				System.out.println("ようこそ、ID:"+id+"さん");
+			}else {
+				System.out.println("ログインできません");
+				System.out.println("もう一度入力してください");
+			}
+		}
 	}
-
 }
