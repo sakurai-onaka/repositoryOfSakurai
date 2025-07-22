@@ -40,7 +40,10 @@ class Main {
 
 	public static void main(String[] args) {
 		/*ここから記入*/
-
+		Phone phone = new Phone();
+		phone.initFee();
+		phone.call();
+		phone.getFee();
 	}
 
 }
