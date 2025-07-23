@@ -1,4 +1,4 @@
-package qustion12;
+package question12;
 
 public class Bank { 
 	 // 残高情報 

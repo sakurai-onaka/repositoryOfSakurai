@@ -61,6 +61,15 @@
  *	クラスメソッドはインスタンスメソッドと何が違いますか？
  *	staticキーワードの使用例を上げてください
  *	更新はDataクラスで行っているのにMainクラスで呼び出しているshowメソッドに反映されているのはなぜですか？
+ *
+ * クラスメソッドはインスタンス化せずに使用できるメソッド。インスタンス化しないのでクラス.メソッド名で呼び出せる。
+ * また、インスタンス化しないのでアクセスできるクラスならすぐに呼び出すことが可能という利点がある。
+ * 注意点としてはstaticメソッドからインスタンスメンバへアクセスすることができないこと。
+ * インスタンスメソッドはstaticメンバにもアクセスできる。
+ * 
+ * mainメソッド。インスタンス化せずに呼び出せているのはstaticを使用しているから。
+ * 
+ * 更新したインスタンスをmainで呼び出したshowメソッドに引数として渡しているから。
  * */
 
 package day07.q02;
@@ -69,7 +78,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		/*ここから記入*/
-
+		//newした時の参照型はnull　ってことはメモリ上領域確保はしていない？
+		Member[] members = new Member[3];
+		members[0] = new Member(1,"人見");
+		members[1] = new Member(2,"植木");
+		members[2] = new Member(3,"吉崎");
+		MemberManager.show(members);
+		MemberManager.update(members ,1 ,"三浦");
+		MemberManager.show(members);
 	}
 
 }
