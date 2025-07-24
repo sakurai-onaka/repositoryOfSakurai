@@ -54,10 +54,14 @@ class Main {
 
 		int magicMp = 10;
 
-		magic.attack(magicMp);
+//		magic.attack(magicMp);
 
 		/*ここから記入*/
-
+		Sorcerer sorcerer = new Sorcerer("ミナト");
+		
+//		sorcerer.attack(magicMp);
+		
+		
 	}
 
 }
