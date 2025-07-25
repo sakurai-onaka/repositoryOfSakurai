@@ -47,7 +47,20 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		// ここに記述
+		HumanPlayer hp = new HumanPlayer("Test");
+		
+		ComPlayer cp = new ComPlayer();
+		
+		Playable winner = JankenBattle.doBattle(hp, cp);
+		
+		if (winner == null) {
+			System.out.println("あいこです");
+		} else if (winner.equals(hp)) {
+			System.out.println(hp.getName() + "さんの勝ちです");
+		} else if (winner.equals(cp)) {
+			System.out.println("コンピュータの勝ちです");
 
+		}
 	}
 
 }

@@ -40,7 +40,14 @@ public class Main {
 
 	public static void main(String[] args) {
 		/*ここから記入*/
-
+		Instrument[] instruments = new Instrument[2];
+		instruments[0] = new Piano("Yamaha");
+		instruments[1] = new Drums("Pearl");
+		
+		for(Instrument instrument : instruments) {
+			System.out.println(instrument);
+			instrument.playMusic();
+		}
 	}
 
 }

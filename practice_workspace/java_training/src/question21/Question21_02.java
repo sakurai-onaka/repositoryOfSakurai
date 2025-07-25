@@ -7,6 +7,8 @@ public class Question21_02 {
 		Question21_01 q21 = new Question21_01();
 		q21.show();
 		q21.show();
+		
+		System.exit(0);
 	}
 
 }

@@ -1,7 +1,6 @@
 package day09.q02;
 
-public class Piano {
-
+public class Piano extends Instrument{
 	private String maker;
 	private double weight;
 
@@ -19,6 +18,22 @@ public class Piano {
 	public void playMusic() {
 		System.out.println(maker + "のピアノを弾きます。");
 
+	}
+	
+	public String getMaker() {
+		return maker;
+	}
+
+	public void setMaker(String maker) {
+		this.maker = maker;
+	}
+
+	public double getWeight() {
+		return weight;
+	}
+
+	public void setWeight(double weight) {
+		this.weight = weight;
 	}
 
 }
