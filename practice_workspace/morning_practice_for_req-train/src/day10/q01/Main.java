@@ -62,8 +62,26 @@
 
 package day10.q01;
 
+import java.io.IOException;
+
 public class Main {
 
 	// ここから追記してください
-
+	public static void main(String[] args) {
+		Account acc = new Account();
+		ConsoleReader cr = new ConsoleReader();
+		int pinInput;
+		
+		try {
+			pinInput = cr.inputPIN();
+			if(pinInput == acc.getPin()) {
+				System.out.println("認証しました");
+				acc.showAccount();
+			}else {
+				System.out.println("暗証番号が違います");
+			}	
+		}catch(IllegalInputException | IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
