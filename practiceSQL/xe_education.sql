@@ -127,3 +127,14 @@ from
 order by 
     empno asc
 ;
+
+--12(1)
+create sequence dept_seq
+    start with 10
+    increment by 1
+;
+
+--12(2)
+select * from dept;
+insert into dept values(dept_seq.nextval,'経営統括部','Redmond, WA 98052-7329 USA');
+insert into dept values(dept_seq.nextval,'ネットワーク事業部',NULL);

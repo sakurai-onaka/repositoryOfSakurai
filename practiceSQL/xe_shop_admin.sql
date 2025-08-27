@@ -125,3 +125,226 @@ select category_id, avg(price) as "平均価格" from items group by category_id ord
 
 --3(18)
 select category_id, avg(price) as "平均価格" from items group by category_id order by category_id desc;
+
+--
+select * from items;
+select * from categories;
+--4(1)
+select
+    items.name,
+    items.price,
+    categories.name
+from
+    items inner join categories
+        on items.category_id = categories.id
+;
+
+--4(2)
+drop table customers;
+create table customers(
+    id number(4) primary key,
+    name varchar2(25char) not null,
+    mail_address varchar2(254) not null,
+    registration_date date DEFAULT SYSDATE not null,
+    update_date date DEFAULT SYSDATE not null
+);
+
+create table orders(
+    id number(5) primary key,
+    customer_id number(4) references customers(id) not null,
+    item_id number(4) references items(id) not null,
+    quantity number(3) not null,
+    order_date date not null,
+    registration_date date DEFAULT SYSDATE,
+    update_date DATE DEFAULT SYSDATE
+);
+
+commit;
+--4(3)
+INSERT INTO customers(id,name,mail_address) values(1,'田中太郎','t.tanaka@abc.jp');
+INSERT INTO customers(id,name,mail_address) values(2,'鈴木次郎','j.suzuki@def.jp');
+INSERT INTO customers(id,name,mail_address) values(3,'渡辺花子','h.watanabe@ghi.jp');
+
+INSERT INTO orders(id,customer_id,item_id,quantity,order_date) values(1,1,2,3,'2023/10/12');
+INSERT INTO orders(id,customer_id,item_id,quantity,order_date) values(2,1,6,2,'2025/4/3');
+INSERT INTO orders(id,customer_id,item_id,quantity,order_date) values(3,3,5,1,'2025/3/15');
+INSERT INTO orders(id,customer_id,item_id,quantity,order_date) values(4,2,5,1,'2024/8/3');
+INSERT INTO orders(id,customer_id,item_id,quantity,order_date) values(5,2,1,1,'2024/8/3');
+INSERT INTO orders(id,customer_id,item_id,quantity,order_date) values(6,3,4,3,'2025/4/3');
+
+commit;
+
+--4(4)
+select
+    name,
+    quantity,
+    order_date
+from
+    items left outer join orders
+        on items.id = orders.item_id
+;
+
+--4(5)
+select
+    customers.name AS "顧客名",
+    items.name AS "カテゴリ名",
+    categories.name AS "商品名",
+    orders.quantity AS "注文数"
+from
+    ((categories inner join items
+        on categories.id = items.category_id)
+        inner join orders
+            on items.id = orders.item_id)
+            inner join customers
+                on orders.customer_id = customers.id
+where
+    categories.id = 2
+;
+
+--5(1)
+select * from items;
+select 
+    name,
+    quantity,
+    order_date
+from
+    (select
+        *
+     from
+        items inner join orders
+            on items.id = orders.item_id
+    )
+;
+
+--5(2)
+select
+    name,
+    quantity,
+    order_date
+from
+    (select
+        *
+     from
+        items inner join orders
+            on items.id = orders.item_id
+    )t1
+where
+    t1.price < (select
+                        max(price) 
+                   from 
+                        items
+                  )
+;
+
+--5(3)
+create sequence mon_seq
+    start with 7
+    increment by 1
+    nocache
+;
+
+--5(4)
+insert into items values(mon_seq.nextval,'ミルクチョコレート（15個入り）',270,sysdate,sysdate,1);
+
+--5(5)
+select * from items order by id asc;
+select * from orders;
+select * from customers;
+
+select
+    customers.id,
+    sum(items.price * orders.QUANTITY)
+from
+    ((customers inner join orders
+        on customers.id = orders.customer_id)
+    inner join items
+        on orders.item_id = items.id)
+group by 
+    customers.id
+having
+    sum(items.price * orders.QUANTITY) 
+    > 
+    (select (sum(price * orders.QUANTITY)/count(Distinct orders.customer_id))
+     from (customers inner join orders
+                            on customers.id = orders.customer_id
+                                inner join items
+                                    on orders.item_id = items.id)
+    )
+order by 
+    customers.id asc
+;
+
+--6(1)
+create table empTest(
+    empno number(5) primary key,
+    name VARCHAR2(50),
+    age number(3),
+    dept_id number(3) references deptTest(dept_id),
+    address_id number(3) references addressTest(adress_id),
+    customer_id number(5) references customersTest(customer_id)
+);
+
+create table deptTest(
+    dept_id number(3) primary key,
+    dept_name VARCHAR2(50)
+);
+
+create table addressTest(
+    adress_id number(3) primary key,
+    adress_name VARCHAR2(50)
+);
+
+create table customersTest(
+    customer_id number(5) primary key,
+    customer_name VARCHAR2(50),
+    customer_staff_name VARCHAR2(50)
+);
+
+drop table empTest;
+drop table customersTest;
+--6(2)
+
+select * from customersTest;
+
+--dept登録
+insert into deptTest values(1,'営業部');
+insert into deptTest values(2,'システム開発部');
+insert into deptTest values(3,'総務部');
+insert into deptTest values(4,'カスタマーサポート部');
+
+--customer登録
+insert into addressTest values(1,'東京都');
+insert into addressTest values(2,'埼玉県');
+insert into addressTest values(3,'千葉県');
+insert into addressTest values(4,'大阪府');
+
+--addressTest登録
+insert into customersTest values(2,'大西システム','中山太郎');
+insert into customersTest values(2,'ジャパンスーパーネット','中山太郎');
+
+
+--emp登録
+insert into empTest values(1,'山田太郎',23,1,1,1);
+insert into empTest values(2,'井川誠',33,1,1,2);
+insert into empTest values(3,'伊藤信子',25,4,1,null);
+insert into empTest values(4,'鈴木弘道',42,4,2,null);
+insert into empTest values(5,'西田葵',27,2,3,null);
+insert into empTest values(6,'村山典弘',30,2,4,null);
+insert into empTest values(7,'浜田恵美',33,3,1,null);
+
+delete from emptest;
+select * from emptest;
+
+select
+    empTest.name,
+    deptTest.dept_name,
+    customersTest.customer_id,
+    customersTest.customer_name
+from
+    (empTest inner join deptTest
+        on empTest.dept_id = deptTest.dept_id)
+        left outer join customersTest
+            on empTest.customer_id = customersTest.customer_id
+;
+
+commit;

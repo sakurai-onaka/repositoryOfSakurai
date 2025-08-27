@@ -129,3 +129,38 @@ group by
 ;
 
 commit;
+
+--7(1)
+
+select
+    empno,
+    ename,
+    sal
+from
+    emp
+where
+    sal >= (select avg(sal) from emp)
+;
+    
+--7(2)
+select
+    empno,
+    ename,
+    job
+from
+    emp e1
+where
+    (select
+        count(*)
+     from
+        emp e2
+     where
+        e1.job = e2.job
+     group by
+        job
+    ) >= 2
+;
+
+select * from emp;
+
+commit;

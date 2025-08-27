@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		header {
+			width: 500px;
+			height: 100px;
+			background-color: red;
+		}
+
+		article {
+			width: 500px;
+			height: 200px;
+			background-color: blue;
+		}
+
+		aside {
+			width: 200px;
+			height: 200px;
+			background-color: yellow;
+		}
+
+		footer {
+			width: 700px;
+			height: 100px;
+			background-color: aquamarine;
+		}
+
+		#aa {
+			display: flex;
+		}
+
+		#p1,
+		#p2,
+		#p3,
+		#p4 {
+
+			width: 40%;
+			margin: 10px;
+			background-color: darkgrey;
+		}
+
+		#aaa,
+		#bbb {
+			display: flex;
+			align-content: center;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		会社/サービス名のロゴや各ページへのリンクを主に設置します
+	</header>
+	<div id="aa">
+		<article>
+			ページの本文記事を配置するメインの部分です
+			<div id="aaa">
+				<div id="p1">
+					コンテンツ
+				</div>
+				<div id="p2">
+					コンテンツ
+				</div>
+			</div>
+			<div id="bbb">
+				<div id="p3">
+					コンテンツ
+				</div>
+				<div id="p4">
+					コンテンツ
+				</div>
+			</div>
+		</article>
+		<aside>
+			同じカテゴリ内のページへ誘導するリンクやバナーを設置します。
+		</aside>
+	</div>
+	<footer>
+		コピーライトやサイトマップ、関連企業へのリンクなどを主に設置します
+	</footer>
+</body>
+
+</html>
