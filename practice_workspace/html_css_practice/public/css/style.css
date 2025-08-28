@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+
+.head {
+	background-color: #48D1CC;
+	display: flex;
+	width: 700px;
+	height: 50px;
+	font-size: 24px;
+	align-items: center;
+}
+
+.head img {
+	width: 20px;
+	height: 20px;
+}
+
+aside {
+	background-color: #7FFFD4;
+	width: 200px;
+	height: 350px;
+}
+
+form {
+	background-color: #FFEBCD;
+	width: 500px;
+	height: 350px;
+}
+
+.aaa {
+	display: flex;
+}
+
+footer {
+	background-color: #DCDCDC;
+	width: 700px;
+	height: 50px;
+}

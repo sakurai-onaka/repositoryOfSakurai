@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+
+
+span.githubpages {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+html {
+	color: #4b1900;
+
+}
+
+body {
+	font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "BIZ UDPGothic", sans-serif;
+	background-color: #f6efdb;
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	/* 水平方向の中央揃え */
+	background-image: url(../images/1399.png);
+	background-size: contain;
+	background-color: rgba(255, 255, 255, 0.66);
+	background-blend-mode: lighten;
+}
+
+header img {
+	max-width: 200%;
+	width: 100%;
+	height: auto;
+}
+
+#pro {
+	margin-top: 60px;
+	height: 50%;
+	font-size: 150%;
+	text-align: center;
+	vertical-align: middle
+}
+
+aside,
+.index {
+	margin: 10px;
+	padding: 20px;
+	text-align: center;
+	/* 水平方向の中央揃え */
+	border: 1px dotted #333333;
+	border-radius: 10px;
+	/* 四隅の角を半径10pxで丸くする */
+	background-color: white;
+	box-shadow: 4px 4px;
+}
+
+main {
+	width: 100%;
+	height: 100%;
+}
+
+h2 {
+	padding: 0 .4em .2em;
+	border-bottom: 3px solid #2589d0;
+	color: #333333;
+}
+
+.hobby {
+	display: flex;
+}
+
+.hobby img {
+	width: 10%;
+}
+
+.heading-medium {
+	font-size: 3rem;
+	text-align: center;
+	line-height: 1;
+}
+
+.side {
+	display: flex;
+	width: auto;
+	height: auto;
+}
+
+.side-menu {
+	list-style: none;
+	text-align: center;
+	margin-bottom: 4rem;
+}
+
+.side-menu li {
+	border-bottom: 1px solid #c9c2bc;
+}
+
+.side-nemu a {
+	color: #432;
+	display: block;
+	padding: 1rem;
+}
+
+.side-menu a:hover {
+	color: #0bd;
+}
+
+footer {
+	background-color: lightpink;
+	padding: 1%;
+}
